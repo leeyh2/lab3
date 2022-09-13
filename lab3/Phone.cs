@@ -1,11 +1,11 @@
 ﻿using System;
 namespace lab3
 {
-    public class Phone:Person
+    public class Phone
     {
         private string phoneNum;
         
-        public string Numbers
+        public string Number
         { get; init; }
 
         public Phone()
