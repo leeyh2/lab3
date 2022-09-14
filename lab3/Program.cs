@@ -1,9 +1,85 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Xml.Linq;
 
 class Program
 {
-    static void Main(string[] args)
+    static List<Person> people = new List<Person>();
+
+    public static void Main(string[] args)
+    {
+        var option = 0;
+        do
+        {
+            DisplayMenu();
+            option = Int32.Parse(Console.ReadLine());
+            MenuChoice(option);
+
+            Console.WriteLine("\nHit Enter to return to menu...");
+            Console.ReadLine();
+            Console.Clear();
+        } while (option != 0);
+    }
+
+    public static void DisplayMenu()
+    {
+        Console.WriteLine("------ Menu ------");
+        Console.WriteLine("1. Create a new Person");
+        Console.WriteLine("2. View all people");
+        Console.WriteLine("3. Remove people");
+        Console.WriteLine("4. Create and View Last Name");
+        Console.WriteLine("5. Create and View Random SSN");
+        Console.WriteLine("0. Exit");
+        Console.WriteLine("------------------");
+    }
+    public static void RemovePerson(int option2)
+    {
+        people.RemoveAt(option2);
+    }
+
+    public static void MenuChoice(int option)
+    {
+        Random random = new Random();
+        switch (option)
+        {
+            case 1:
+                people.Add(new Person());
+                break;
+            case 2:
+                foreach (Person p in people)
+                {
+                    Console.WriteLine(p);
+                }
+                break;
+            case 3:
+                var option2 = 0;
+                Console.WriteLine("Choose the person to remove from person 0 - " + people.Count);
+                option2 = Int32.Parse(Console.ReadLine());
+                break;
+            case 4:
+                Person rando = people[random.Next(people.Count())];
+                Console.WriteLine(rando.LastName);
+
+                break;
+            case 5:
+                Person rando = people[random.Next(people.Count())];
+                Console.WriteLine(rando.SSN);
+                break;
+            case 6:
+                Person rando = people[random.Next(people.Count())];
+                Console.WriteLine(rando.Phone);
+                break;
+            case 0:
+                Console.WriteLine("See ya!");
+                break;
+            default:
+                Console.WriteLine("Invalid option. Can you read?");
+                break;
+        }
+    }
+    /*
+     * My try at it
+     * static void Main(string[] args)
     {
          string userInput;
         bool flag = true;
@@ -47,6 +123,7 @@ class Program
                         people.SSN;
                         people.Phone;
                     }
+                    // Console.WriteLine(new Person()); 
 
                     break;
 
@@ -59,7 +136,7 @@ class Program
 
                 case "4":
                     //Display random last name
-                    peoples.
+                    
                     break;
 
                 case "5":
@@ -80,7 +157,8 @@ class Program
         }
 
     }
+    */
 
-  
+
 }
 
